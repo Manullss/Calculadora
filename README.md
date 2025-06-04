@@ -5,7 +5,11 @@
 | |__| (_| | | (__| |_| | | (_| | (_| | (_) | | | (_| |
  \____\__,_|_|\___|\__,_|_|\__,_|\__,_|\___/|_|  \__,_|
 ```
-Este proyecto fue echo con las librerias (re, tkinter)
+```text
+
+Este proyecto fue echo con las librerias (re, tkinter).
+
+```
 ![06cal](https://github.com/user-attachments/assets/ac6036b8-3c1f-4806-b724-2c795e6a11f6)
 
 
