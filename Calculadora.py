@@ -114,10 +114,10 @@ class calculadora:
             dato = self.parentesis(dato)
 
         while True:
-            paren=re.search(r"((\d+(?:\.\d+)?)?(\([-+]?\d+(?:\.\d+)?\))+(\d+(?:\.\d+)?)?)+",dato)       #Busca datos como (4)(54)3,  12(-3)6(2)2,  (2)
-            if not paren:
+            paren=re.search(r"((\d+(?:\.\d+)?)?(\([-+]?\d+(?:\.\d+)?\))+(\d+(?:\.\d+)?)?)+",dato)       #Busca datos como (4)(54)3,  12(-3)6(2)2,  (2)  si no encuentra rompe el siclo
+            if not paren:  
                 break
-            dato = self.eli_paren(dato)
+            dato = self.eli_paren(dato)  
 
         if re.search(r"[-+]?\d+(?:\.\d+)?|^$",dato) != True:        #Busca operaciones sin Parentesis como 3x4+45-4 
             dato = self.operaciones(dato)           
@@ -127,13 +127,13 @@ class calculadora:
         else:
             try:
                 d = float(dato)
-                dato=str(round(d,7))
+                dato=str(round(d,7))  #redondeamos y combertimos a string
             except:
                 self.datoc.set("Syntax Error")
 
         if re.search(r"^([-+]?\d+(?:\.\d+)?)$|^$",dato):        #Evalua si el resultado final es algun numero (Entero o Natural)
             self.datoc.set(dato)
-        else:
+        else:                                                    #si el resoltado final no es (Entero o Natural) imprimios, syntax error
             self.datoc.set("Syntax Error")
 
     def parentesis(self,par):
@@ -145,9 +145,9 @@ class calculadora:
 
             n1 = nuevo.start()
             n2 = nuevo.end()
-            nue1 = par[:n1]             # parte izquierda antes del paréntesis
-            nue2 = par[n2:]             # parte derecha después del paréntesis
-            sep = nuevo.group(1)        # contenido del paréntesis (sin los paréntesis)
+            nue1 = par[:n1]             # parte izquierda antes del paréntesis  <-(datos)
+            nue2 = par[n2:]             # parte derecha después del paréntesis  (datos)->
+            sep = nuevo.group(1)        # contenido del paréntesis (sin los paréntesis)  (<-   datos   ->)
 
             ps = self.operaciones(sep)  
             if nue1 != None or nue2 != None:                    #si alrededor del parentesis habian datos, el resultado del parentesis lo guardamos enotro parentesis 
@@ -158,13 +158,13 @@ class calculadora:
             return par
     
     def operaciones(self,dato):                     #Donde el programa ara las opereaciones Matematicas
-        dato = re.sub(r"\-\-","+",dato)
-        dato = re.sub(r"\-\+","-",dato)
-        dato = re.sub(r"\+\-","-",dato)
+        dato = re.sub(r"\-\-","+",dato)                #Si el dato que ingresa a operaciones tiene dos -- se cambia por +
+        dato = re.sub(r"\-\+","-",dato)                #Si el dato que ingresa a operaciones tiene -+ se cambia por -
+        dato = re.sub(r"\+\-","-",dato)                #Si el dato que ingresa a operaciones tiene +- se cambia por -
 
         if re.search(r"(√\d+(?:\.\d+)?|\d+(?:\.\d+)?\^([-+]?\d+(?:\.\d+)?))",dato):   #Busca raizes y elevados  
             dato_regex=r"(√\d+(?:\.\d+)?|\d+(?:\.\d+)?\^([-+]?\d+(?:\.\d+)?))"
-            rege=r"[\^√]"
+            rege=r"[\^√]"     
             while re.search(dato_regex,dato):
                 n1,n2,l1,l2,sim = self.separador(dato,dato_regex,rege)
 
@@ -177,15 +177,15 @@ class calculadora:
                     dato = n1 + ele + n2
             
             
-        if re.search(r"\d+(?:\.\d+)?[x÷][\-+]?\d+(?:\.\d+)?",dato):                 #Busca multiliaciones y diviviones 
+        if re.search(r"\d+(?:\.\d+)?[x÷][\-+]?\d+(?:\.\d+)?",dato):                 #Busca multiplicaciones y diviviones 
             dato_regex=r"\d+(?:\.\d+)?[x÷][\-+]?\d+(?:\.\d+)?"
             rege=r"[x÷]"
             while re.search(dato_regex,dato):
                 n1,n2,l1,l2,sim = self.separador(dato,dato_regex,rege)
+                
                 if sim == "x":
                     mul = str(round(l1*l2,7))
-                    dato = n1 + mul + n2
-                    
+                    dato = n1 + mul + n2   
                 elif sim == "÷":
                     div = str(l1/l2)
                     dato = n1 + div + n2
@@ -199,7 +199,7 @@ class calculadora:
             while re.search(dato_regex,dato):
                 dato = separador_de_digitos(dato,dato_regex)
 
-        return dato
+        return dato  
    
     def separador(self,dato,regex,rege2):
         
@@ -239,7 +239,7 @@ class calculadora:
 
         return dato   
     
-def separador_de_digitos(dato:str,regex):       #Hace operaciones de signos basica como sumas, restas y leyes de signos como (-)(-)=+ , (-)(+)=- , etc
+def separador_de_digitos(dato:str,regex):       #Hace leyes de signos basicas como (-)(-)=- , (-)(+)=depende del numero mayor, etc
         nuevo=re.search(f"{regex}",dato)
         n1=nuevo.start()
         n2=nuevo.end()
@@ -249,10 +249,10 @@ def separador_de_digitos(dato:str,regex):       #Hace operaciones de signos basi
         res=0
         while re.search(r"[-+]?\d+(?:\.\d+)?",sep):
             nn1 = re.search(r"[-+]?\d+(?:\.\d+)?",sep)
-            ll1 = nn1.start()
+            ll1 = nn1.start()   
             ll2 = nn1.end()
             nn2 = float(sep[ll1:ll2])       #Extrae la primera coicidencia que encuentre 
-            res += nn2
+            res += nn2                      # 0+(3)=3   3+(-4)=-1   -1+(+2)=1   
             sep = sep[:ll1] + sep[ll2:]   
         r=str(res)
         dato = nue1 + r + nue2
