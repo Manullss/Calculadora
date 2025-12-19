@@ -6,7 +6,7 @@ import re
 class calculadora:
     def __init__(self):
         self.ventana1=tk.Tk()
-        icono=PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/calculadora.png')
+        icono=PhotoImage(file='C:/Users/Desktop/calculadora.png')
         self.ventana1.iconphoto(False,icono)
         self.ventana1.title("Calculadora")
         self.labelframe1=ttk.LabelFrame(self.ventana1)
@@ -24,28 +24,28 @@ class calculadora:
 
     def digitos(self):  #Iconos de los botones
         self.iconos = [
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/1.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/2.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/3.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/cruz.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/dividir.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/4.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/5.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/6.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/mas.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/menos.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/7.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/8.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/9.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/raiz.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/elevado.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/0.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/parentesisIzq.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/parentesisDer.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/reinicio.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/bala.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/borra.png'),
-            tk.PhotoImage(file='C:/Users/usuario/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/igual.png')
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/1.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/2.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/3.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/cruz.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/dividir.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/4.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/5.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/6.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/mas.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/menos.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/7.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/8.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/9.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/raiz.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/elevado.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/0.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/parentesisIzq.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/parentesisDer.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/reinicio.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/bala.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/borra.png'),
+            tk.PhotoImage(file='C:/Users/Desktop/Practicas de Phyton/Proyectos_GitHub/Iconos/igual.png')
         ]
         #Botones de la calculadora
         self.boton1=ttk.Button(self.labelframe2,image=self.iconos[0],command=lambda: self.datoc.set(self.datoc.get() + "1"))  
