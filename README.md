@@ -5,7 +5,7 @@
 | |__| (_| | | (__| |_| | | (_| | (_| | (_) | | | (_| |
  \____\__,_|_|\___|\__,_|_|\__,_|\__,_|\___/|_|  \__,_|
 ```
-## 🧮 Calculadora Gráfica en Python (Tkinter)
+## 🧮 Calculadora Gráfica en Python (Tkinter)  &nbsp; &nbsp; &nbsp; ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 Este proyecto es una calculadora gráfica avanzada desarrollada en Python usando Tkinter.
 Permite realizar operaciones matemáticas básicas y avanzadas sin usar eval(), procesando las expresiones manualmente mediante expresiones regulares.   
